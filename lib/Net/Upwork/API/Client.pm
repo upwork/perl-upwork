@@ -1,3 +1,16 @@
+# Licensed under the Upwork's API Terms of Use;
+# you may not use this file except in compliance with the Terms.
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Author::    Maksym Novozhylov (mnovozhilov@upwork.com)
+# Copyright:: Copyright 2015(c) Upwork.com
+# License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
+
 package Net::Upwork::API::Client;
 
 use strict;
@@ -5,6 +18,7 @@ use warnings;
 
 use Net::OAuth;
 use Net::OAuth::Client;
+use IO::Socket::SSL qw( SSL_VERIFY_NONE );
 
 $Net::OAuth::PROTOCOL_VERSION = Net::OAuth::PROTOCOL_VERSION_1_0A;
 
@@ -85,13 +99,17 @@ sub get_oauth_client {
 
 B<Parameters>
 
-$url
+$uri
 
     Resource URL
 
+$params
+
+    Hash of parameters
+
 B<Return value>
 
-    Hash
+    String
 
 =cut
 
@@ -101,6 +119,94 @@ sub get {
     my %params = @_;
 
     return $self->send_request($uri, "GET", \%params);
+}
+
+=item post
+
+    POST request to protected resource
+
+B<Parameters>
+
+$uri
+
+    Resource URL
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    String
+
+=cut
+
+sub post {
+    my $self = shift;
+    my $uri = shift;
+    my %params = @_;
+
+    return $self->send_request($uri, "POST", \%params);
+}
+
+=item put
+
+    PUT request to protected resource
+
+B<Parameters>
+
+$uri
+
+    Resource URL
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    String
+
+=cut
+
+sub put {
+    my $self = shift;
+    my $uri = shift;
+    my %params = @_;
+
+    $params{&OVERLOAD_VAR} = 'put';
+
+    return $self->send_request($uri, "POST", \%params);
+}
+
+=item delete
+
+    DELETE request to protected resource
+
+B<Parameters>
+
+$uri
+
+    Resource URL
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    String
+
+=cut
+
+sub delete {
+    my $self = shift;
+    my $uri = shift;
+    my %params = @_;
+
+    $params{&OVERLOAD_VAR} = 'delete';
+
+    return $self->send_request($uri, "POST", \%params);
 }
 
 =item send_request
@@ -130,6 +236,9 @@ B<Return value>
 sub send_request {
     my ($self, $uri, $method, $params) = @_;
 
+    if (defined $self->{config}{verify_ssl} && !$self->{config}{verify_ssl}) {
+        $self->{oauth_client}{user_agent}{ssl_opts} = {verify_hostname => 0, SSL_verify_mode => SSL_VERIFY_NONE};
+    }
     my $request = $self->{oauth_client}->_make_request(
                     "protected resource",
                     site => BASE_HOST,

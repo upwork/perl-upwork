@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Auth;
+package Net::Upwork::API::Routers::Metadata;
 
 use strict;
 use warnings;
@@ -52,9 +52,9 @@ sub new {
     return $self;
 }
 
-=item get_user_info
+=item get_categories
 
-    Get user info
+    Get categories
 
 B<Return value>
 
@@ -62,11 +62,97 @@ B<Return value>
 
 =cut
 
-sub get_user_info {
+sub get_categories {
+    my $self = shift;
+
+    return $self->client()->get("/profiles/v1/metadata/categories");
+}
+
+=item get_categories_v2
+
+    Get categories (V2)
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_categories_v2 {
+    my $self = shift;
+
+    return $self->client()->get("/profiles/v2/metadata/categories");
+}
+
+=item get_skills
+
+    Get skills
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_skills {
+    my $self = shift;
+
+    return $self->client()->get("/profiles/v1/metadata/skills");
+}
+
+=item get_regions
+
+    Get regions
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_regions {
+    my $self = shift;
+
+    return $self->client()->get("/profiles/v1/metadata/regions");
+}
+
+=item get_tests
+
+    Get tests
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_tests {
+    my $self = shift;
+
+    return $self->client()->get("/profiles/v1/metadata/tests");
+}
+
+=item get_reasons
+
+    Get reasons
+
+B<Parameters>
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_reasons {
     my $self = shift;
     my %params = @_;
 
-    return $self->client()->get("/auth/v1/info", %params);
+    return $self->client()->get("/profiles/v1/metadata/reasons", %params);
 }
 
 =back

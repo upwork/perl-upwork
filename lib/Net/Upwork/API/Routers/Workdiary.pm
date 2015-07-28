@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Auth;
+package Net::Upwork::API::Routers::Workdiary;
 
 use strict;
 use warnings;
@@ -52,9 +52,27 @@ sub new {
     return $self;
 }
 
-=item get_user_info
+=item get
 
-    Get user info
+    Get Workdiary
+
+B<Parameters>
+
+$company
+
+    Company ID
+
+$username
+
+    User ID
+
+$date
+
+    Date
+
+$params
+
+    Hash of parameters
 
 B<Return value>
 
@@ -62,11 +80,47 @@ B<Return value>
 
 =cut
 
-sub get_user_info {
+sub get {
     my $self = shift;
+    my $company = shift;
+    my $username = shift;
+    my $date = shift;
     my %params = @_;
 
-    return $self->client()->get("/auth/v1/info", %params);
+    return $self->client()->get("/team/v1/workdiaries/" . $company . "/" . $username . "/" . $date, %params);
+}
+
+=item get_by_contract
+
+    Get Workdiary by Contract
+
+B<Parameters>
+
+$contract
+
+    Contract ID
+
+$date
+
+    Date
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_by_contract {
+    my $self = shift;
+    my $contract = shift;
+    my $date = shift;
+    my %params = @_;
+
+    return $self->client()->get("/team/v2/workdiaries/contracts/" . $contract . "/" . $date, %params);
 }
 
 =back

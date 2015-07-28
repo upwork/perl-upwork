@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Auth;
+package Net::Upwork::API::Routers::Workdays;
 
 use strict;
 use warnings;
@@ -52,9 +52,27 @@ sub new {
     return $self;
 }
 
-=item get_user_info
+=item get_by_company
 
-    Get user info
+    Get Workdays by Company
+
+B<Parameters>
+
+$company
+
+    Company ID
+
+$from_date
+
+    Start date
+
+$till_date
+
+    End date
+
+$params
+
+    Hash of parameters
 
 B<Return value>
 
@@ -62,11 +80,52 @@ B<Return value>
 
 =cut
 
-sub get_user_info {
+sub get_by_company {
     my $self = shift;
+    my $company = shift;
+    my $from_date = shift;
+    my $till_date = shift;
     my %params = @_;
 
-    return $self->client()->get("/auth/v1/info", %params);
+    return $self->client()->get("/team/v2/workdays/companies/" . $company . "/" . $from_date . "," . $till_date, %params);
+}
+
+=item get_by_contract
+
+    Get Workdays by Contract
+
+B<Parameters>
+
+$contract
+
+    Contract ID
+
+$from_date
+
+    Start date
+
+$till_date
+
+    End date
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_by_contract {
+    my $self = shift;
+    my $contract = shift;
+    my $from_date = shift;
+    my $till_date = shift;
+    my %params = @_;
+
+    return $self->client()->get("/team/v2/workdays/contracts/" . $contract . "/" . $from_date . "," . $till_date, %params);
 }
 
 =back

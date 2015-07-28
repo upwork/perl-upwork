@@ -11,49 +11,73 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Config;
+package Net::Upwork::API::Routers::Payments;
 
 use strict;
 use warnings;
+use parent "Net::Upwork::API";
+
+use constant ENTRY_POINT => Net::Upwork::API::Client::ENTRY_POINT_API;
 
 =pod
 
 =head1 NAME
 
-Config
+Auth
 
 =head1 FUNCTIONS
 
 =over 4
 
-=item new(%params)
+=item new($api)
 
-Create a new Config
+Create a new object for accessing Auth API
 
 B<Parameters>
 
-$params
+$api
 
-    List of configuration options
+    API object
 
 =cut
 
 sub new {
     my $class = shift;
+    my $api = shift;
     my %opts = @_;
-    $opts{consumer_key} ||= "";
-    $opts{consumer_secret} ||= "";
-    $opts{access_token} ||= "";
-    $opts{access_secret} ||= "";
-    $opts{callback} ||= "oob";
-    $opts{signature_method} ||= "HMAC-SHA1";
-    $opts{debug} ||= 0;
-    unless ($opts{consumer_key} && $opts{consumer_secret}) {
-        die "You must specify a consumer key and a secret in the config\n";
-    }
+    $opts{client} = $api->{client};
+    $opts{client}{epoint} = ENTRY_POINT;
     my $self = bless \%opts, $class;
 
     return $self;
+}
+
+=item submit_bonus
+
+    Submit bonus
+
+B<Parameters>
+
+$team_reference
+
+    Team reference
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub submit_bonus {
+    my $self = shift;
+    my $team_reference = shift;
+    my %params = @_;
+
+    return $self->client()->post("/hr/v2/teams/" . $team_reference . "/adjustments", %params);
 }
 
 =back
