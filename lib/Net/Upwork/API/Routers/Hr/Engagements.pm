@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Organization::Teams;
+package Net::Upwork::API::Routers::Hr::Engagements;
 
 use strict;
 use warnings;
@@ -48,7 +48,13 @@ sub new {
 
 =item get_list
 
-    Get Teams Info
+    Get list of engagements
+
+B<Parameters>
+
+$params
+
+    Hash of parameters
 
 B<Return value>
 
@@ -58,19 +64,20 @@ B<Return value>
 
 sub get_list {
     my $self = shift;
+    my %params = @_;
 
-    return $self->client()->get("/hr/v2/teams");
+    return $self->client()->get("/hr/v2/engagements", %params);
 }
 
-=item get_users_in_team
+=item get_specific
 
-    Get Users in Team
+    Get specific engagement
 
 B<Parameters>
 
-$team_ref
+$reference
 
-    Team reference
+    Engagement reference
 
 B<Return value>
 
@@ -78,11 +85,11 @@ B<Return value>
 
 =cut
 
-sub get_users_in_team {
+sub get_specific {
     my $self = shift;
-    my $team_ref = shift;
+    my $reference = shift;
 
-    return $self->client()->get("/hr/v2/teams/" . $team_ref . "/users");
+    return $self->client()->get("/hr/v2/engagements/" . $reference);
 }
 
 =back

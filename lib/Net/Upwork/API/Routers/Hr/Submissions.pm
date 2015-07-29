@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Organization::Teams;
+package Net::Upwork::API::Routers::Hr::Submissions;
 
 use strict;
 use warnings;
@@ -46,31 +46,15 @@ sub new {
     return Net::Upwork::API::init_router($class, $api, ENTRY_POINT);
 }
 
-=item get_list
+=item request_approval
 
-    Get Teams Info
-
-B<Return value>
-
-    JSON response as a string
-
-=cut
-
-sub get_list {
-    my $self = shift;
-
-    return $self->client()->get("/hr/v2/teams");
-}
-
-=item get_users_in_team
-
-    Get Users in Team
+    Freelancer submits work for the client to approve
 
 B<Parameters>
 
-$team_ref
+$params
 
-    Team reference
+    Hash of parameters
 
 B<Return value>
 
@@ -78,11 +62,67 @@ B<Return value>
 
 =cut
 
-sub get_users_in_team {
+sub request_approval {
     my $self = shift;
-    my $team_ref = shift;
+    my %params = @_;
 
-    return $self->client()->get("/hr/v2/teams/" . $team_ref . "/users");
+    return $self->client()->post("/hr/v3/fp/submissions", %params);
+}
+
+=item approve
+
+    Approve an existing Submission
+
+B<Parameters>
+
+$submission_id
+
+    Submission ID
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub approve {
+    my $self = shift;
+    my $submission_id = shift;
+    my %params = @_;
+
+    return $self->client()->put("/hr/v3/fp/submissions/" . $submission_id . "/approve", %params);
+}
+
+=item reject
+
+    Reject an existing Submission
+
+B<Parameters>
+
+$submission_id
+
+    Submission ID
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub reject {
+    my $self = shift;
+    my $submission_id = shift;
+    my %params = @_;
+
+    return $self->client()->put("/hr/v3/fp/submissions/" . $submission_id . "/reject", %params);
 }
 
 =back

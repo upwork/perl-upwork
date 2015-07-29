@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Organization::Teams;
+package Net::Upwork::API::Routers::Hr::Interviews;
 
 use strict;
 use warnings;
@@ -46,31 +46,19 @@ sub new {
     return Net::Upwork::API::init_router($class, $api, ENTRY_POINT);
 }
 
-=item get_list
+=item invite
 
-    Get Teams Info
-
-B<Return value>
-
-    JSON response as a string
-
-=cut
-
-sub get_list {
-    my $self = shift;
-
-    return $self->client()->get("/hr/v2/teams");
-}
-
-=item get_users_in_team
-
-    Get Users in Team
+    Invite to Interview
 
 B<Parameters>
 
-$team_ref
+$job_key
 
-    Team reference
+    Job key
+
+$params
+
+    Hash of parameters
 
 B<Return value>
 
@@ -78,11 +66,12 @@ B<Return value>
 
 =cut
 
-sub get_users_in_team {
+sub invite {
     my $self = shift;
-    my $team_ref = shift;
+    my $job_key = shift;
+    my %params = @_;
 
-    return $self->client()->get("/hr/v2/teams/" . $team_ref . "/users");
+    return $self->client()->post("/hr/v1/jobs/" . $job_key . "/candidates", %params);
 }
 
 =back

@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Organization::Teams;
+package Net::Upwork::API::Routers::Hr::Jobs;
 
 use strict;
 use warnings;
@@ -48,7 +48,13 @@ sub new {
 
 =item get_list
 
-    Get Teams Info
+    Get list of jobs
+
+B<Parameters>
+
+$params
+
+    Hash of parameters
 
 B<Return value>
 
@@ -58,19 +64,20 @@ B<Return value>
 
 sub get_list {
     my $self = shift;
+    my %params = @_;
 
-    return $self->client()->get("/hr/v2/teams");
+    return $self->client()->get("/hr/v2jobs", %params);
 }
 
-=item get_users_in_team
+=item get_specific
 
-    Get Users in Team
+    Get specific job
 
 B<Parameters>
 
-$team_ref
+$key
 
-    Team reference
+    Job key
 
 B<Return value>
 
@@ -78,11 +85,90 @@ B<Return value>
 
 =cut
 
-sub get_users_in_team {
+sub get_specific {
     my $self = shift;
-    my $team_ref = shift;
+    my $key = shift;
 
-    return $self->client()->get("/hr/v2/teams/" . $team_ref . "/users");
+    return $self->client()->get("/hr/v2/jobs/" . $key);
+}
+
+=item post_job
+
+    Post a new job
+
+B<Parameters>
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub post_job {
+    my $self = shift;
+    my %params = @_;
+
+    return $self->client()->post("/hr/v2jobs", %params);
+}
+
+=item edit_job
+
+    Edit existent job
+
+B<Parameters>
+
+$key
+
+    Job key
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub edit_job {
+    my $self = shift;
+    my $key = shift;
+    my %params = @_;
+
+    return $self->client()->put("/hr/v2jobs/" . $key, %params);
+}
+
+=item delete_job
+
+    Delete existent job
+
+B<Parameters>
+
+$key
+
+    Job key
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub delete_job {
+    my $self = shift;
+    my $key = shift;
+    my %params = @_;
+
+    return $self->client()->delete("/hr/v2jobs/" . $key, %params);
 }
 
 =back

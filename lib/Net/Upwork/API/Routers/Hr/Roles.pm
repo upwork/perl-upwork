@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Organization::Teams;
+package Net::Upwork::API::Routers::Hr::Roles;
 
 use strict;
 use warnings;
@@ -46,9 +46,9 @@ sub new {
     return Net::Upwork::API::init_router($class, $api, ENTRY_POINT);
 }
 
-=item get_list
+=item get_all
 
-    Get Teams Info
+    Get user roles
 
 B<Return value>
 
@@ -56,21 +56,21 @@ B<Return value>
 
 =cut
 
-sub get_list {
+sub get_all {
     my $self = shift;
 
-    return $self->client()->get("/hr/v2/teams");
+    return $self->client()->get("/hr/v2/userroles");
 }
 
-=item get_users_in_team
+=item get_by_specific_user
 
-    Get Users in Team
+    Get by specific user
 
 B<Parameters>
 
-$team_ref
+$user_ref
 
-    Team reference
+    User reference
 
 B<Return value>
 
@@ -78,11 +78,11 @@ B<Return value>
 
 =cut
 
-sub get_users_in_team {
+sub get_by_specific_user {
     my $self = shift;
-    my $team_ref = shift;
+    my $user_ref = shift;
 
-    return $self->client()->get("/hr/v2/teams/" . $team_ref . "/users");
+    return $self->client()->get("/hr/v2/userroles/" . $user_ref);
 }
 
 =back
