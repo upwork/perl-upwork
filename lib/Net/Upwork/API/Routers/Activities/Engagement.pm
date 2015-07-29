@@ -11,7 +11,7 @@
 # Copyright:: Copyright 2015(c) Upwork.com
 # License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-package Net::Upwork::API::Routers::Payments;
+package Net::Upwork::API::Routers::Activities::Engagement;
 
 use strict;
 use warnings;
@@ -46,15 +46,46 @@ sub new {
     return Net::Upwork::API::init_router($class, $api, ENTRY_POINT);
 }
 
-=item submit_bonus
+=item get_specific
 
-    Submit bonus
+    List activities for specific engagement
 
 B<Parameters>
 
-$team_reference
+$engagement_ref
 
-    Team reference
+    Engagement reference
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub get_specific {
+    my $self = shift;
+    my $engagement_ref = shift;
+
+    return $self->client()->get("/tasks/v2/tasks/contracts/" . $engagement_ref);
+}
+
+=item assign
+
+    Assign engagements to the list of activities
+
+B<Parameters>
+
+$company
+
+    Company ID
+
+$team
+
+    Team ID
+
+$engagement
+
+    Engagement
 
 $params
 
@@ -66,12 +97,14 @@ B<Return value>
 
 =cut
 
-sub submit_bonus {
+sub assign {
     my $self = shift;
-    my $team_reference = shift;
+    my $company = shift;
+    my $team = shift;
+    my $engagement = shift;
     my %params = @_;
 
-    return $self->client()->post("/hr/v2/teams/" . $team_reference . "/adjustments", %params);
+    return $self->client()->put("/otask/v1/tasks/companies/" . $company . "/" . $team . "/engagements/" . $engagement, %params);
 }
 
 =back

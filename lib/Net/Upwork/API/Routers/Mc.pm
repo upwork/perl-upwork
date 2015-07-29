@@ -42,14 +42,8 @@ $api
 =cut
 
 sub new {
-    my $class = shift;
-    my $api = shift;
-    my %opts = @_;
-    $opts{client} = $api->{client};
-    $opts{client}{epoint} = ENTRY_POINT;
-    my $self = bless \%opts, $class;
-
-    return $self;
+    my ($class, $api) = @_;
+    return Net::Upwork::API::init_router($class, $api, ENTRY_POINT);
 }
 
 =item get_trays
@@ -144,7 +138,7 @@ $application_id
 
 $context
 
-    Context
+    Optional, by default 'Interviews'. Context
 
 B<Return value>
 

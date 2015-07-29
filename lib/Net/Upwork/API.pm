@@ -55,6 +55,43 @@ sub new {
     return $self;
 }
 
+=item init_router
+
+    Initialize router
+
+B<Parameters>
+
+$class
+
+    Class
+
+$api
+
+    API object
+
+$epoint
+
+    Entry point for the router
+
+B<Return value>
+
+    Object
+
+=cut
+
+sub init_router {
+    my $class = shift;
+    my $api = shift;
+    my $epoint = shift;
+    my %opts = @_;
+
+    $opts{client} = $api->{client};
+    $opts{client}{epoint} = $epoint;
+    my $self = bless \%opts, $class;
+
+    return $self;
+}
+
 =item get_access_token()
 
     Get access token key/secret pair
