@@ -37,7 +37,7 @@ my $builder = Module::Build->new(
     meta_add   => {
         resources => {
             homepage   => 'http://developers.upwork.com',
-#            repository => 'git@github.com:upwork/perl-upwork.git',
+            repository => 'https://github.com/upwork/perl-upwork.git',
             bugtracker => 'https://github.com/upwork/perl-upwork/issues',
         },
     },

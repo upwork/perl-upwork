@@ -19,6 +19,8 @@ use warnings;
 use Net::Upwork::API::Config;
 use Net::Upwork::API::Client;
 
+our $VERSION = '1.0.0';
+
 =pod
 
 =head1 NAME
