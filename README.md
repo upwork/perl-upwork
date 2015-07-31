@@ -2,8 +2,8 @@ Perl bindings for Upwork API
 ============
 
 [![License](http://img.shields.io/packagist/l/upwork/php-upwork.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![CPAN](https://img.shields.io/cpan/v/Net-Upwork-API.svg)](https://metacpan.org/pod/Net::Upwork::API)
 [![Build Status](https://travis-ci.org/upwork/perl-upwork.svg)](https://travis-ci.org/upwork/perl-upwork)
-[![Latest Stable Version](https://poser.pugx.org/upwork/perl-upwork/v/stable.svg)](https://github.com/upwork/perl-upwork/releases)
 
 # Introduction
 This project provides a set of resources of Upwork API from http://developers.upwork.com
