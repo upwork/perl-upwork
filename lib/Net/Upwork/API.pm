@@ -159,8 +159,6 @@ sub has_access_token {
             (!($self->{config}{access_token} eq "") && !($self->{config}{access_secret} eq ""));
 }
 
-=back
-
 =item client()
 
     Get client object
@@ -175,6 +173,8 @@ sub client {
     my $self = shift;
     return $self->{client};
 }
+
+=back
 
 =head1 AUTHOR
 

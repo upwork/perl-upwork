@@ -98,13 +98,6 @@ sub get_specific_brief {
 
 Maksym Novozhylov C<< <mnovozhilov@upwork.com> >>
 
-
-=back
-
-=head1 AUTHOR
-
-Maksym Novozhylov C<< <mnovozhilov@upwork.com> >>
-
 =head1 COPYRIGHT
 
 Copyright E<copy> Upwork Global Corp., 2015
