@@ -283,7 +283,7 @@ sub format_uri {
     my ($uri, $epoint) = @_;
     $epoint ||= DEFAULT_EPOINT;
 
-    return $epoint . $uri . "." . DATA_FORMAT;
+    return $epoint . $uri . (($epoint eq DEFAULT_EPOINT) ? "." . DATA_FORMAT : "");
 }
 
 =item version
