@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 use strict;
-use Test::More tests => 7;
+use Test::More tests => 6;
 use lib qw(lib);
 use Net::Upwork::API::Routers::Metadata;
 
