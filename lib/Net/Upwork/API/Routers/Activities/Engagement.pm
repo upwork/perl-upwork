@@ -107,6 +107,34 @@ sub assign {
     return $self->client()->put("/otask/v1/tasks/companies/" . $company . "/" . $team . "/engagements/" . $engagement, %params);
 }
 
+=item assign_to_engagement
+
+    Assign to specific engagement the list of activities
+
+B<Parameters>
+
+$engagement_ref
+
+    Engagement
+
+$params
+
+    Hash of parameters
+
+B<Return value>
+
+    JSON response as a string
+
+=cut
+
+sub assign_to_engagement {
+    my $self = shift;
+    my $engagement_ref = shift;
+    my %params = @_;
+
+    return $self->client()->put("/tasks/v2/tasks/contracts/" . $engagement_ref, %params);
+}
+
 =back
 
 =head1 AUTHOR
