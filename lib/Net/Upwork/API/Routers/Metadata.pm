@@ -46,22 +46,6 @@ sub new {
     return Net::Upwork::API::init_router($class, $api, ENTRY_POINT);
 }
 
-=item get_categories
-
-    Get categories
-
-B<Return value>
-
-    JSON response as a string
-
-=cut
-
-sub get_categories {
-    my $self = shift;
-
-    return $self->client()->get("/profiles/v1/metadata/categories");
-}
-
 =item get_categories_v2
 
     Get categories (V2)
