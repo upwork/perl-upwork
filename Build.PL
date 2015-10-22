@@ -31,6 +31,7 @@ my $builder = Module::Build->new(
         'Test::Warn' => '0.21',
     },
     requires => {
+	'IO::Socket::SSL' => '1.965',
         'Net::OAuth' => '0.28',
     },    
     meta_merge => { keywords => [qw( upwork )], },
