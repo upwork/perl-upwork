@@ -76,6 +76,10 @@ $type
 
     Thread type
 
+$params
+
+    (Optional) Hash of parameters
+
 B<Return value>
 
     JSON response as a string
@@ -86,8 +90,9 @@ sub get_tray_by_type {
     my $self = shift;
     my $username = shift;
     my $type = shift;
+    my %params = @_;
 
-    return $self->client()->get("/mc/v1/trays/" . $username . "/" . $type);
+    return $self->client()->get("/mc/v1/trays/" . $username . "/" . $type, %params);
 }
 
 =item get_thread_details
