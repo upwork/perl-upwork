@@ -66,7 +66,7 @@ sub find {
     my $self = shift;
     my %params = @_;
 
-    return $self->client()->get("/profiles/v2/search/job", %params);
+    return $self->client()->get("/profiles/v2/search/jobs", %params);
 }
 
 =back
