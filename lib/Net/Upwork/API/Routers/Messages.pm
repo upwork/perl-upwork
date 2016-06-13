@@ -59,8 +59,9 @@ B<Return value>
 sub get_rooms {
     my $self = shift;
     my $company = shift;
+    my %params = @_;
 
-    return $self->client()->get("/messages/v3/" . $company . "/rooms");
+    return $self->client()->get("/messages/v3/" . $company . "/rooms", %params);
 }
 
 =item get_room_details
