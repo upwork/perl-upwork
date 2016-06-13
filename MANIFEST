@@ -70,7 +70,7 @@ lib/Net/Upwork/API/Routers/Hr/Roles.pm
 lib/Net/Upwork/API/Routers/Hr/Submissions.pm
 lib/Net/Upwork/API/Routers/Jobs/Profile.pm
 lib/Net/Upwork/API/Routers/Jobs/Search.pm
-lib/Net/Upwork/API/Routers/Mc.pm
+lib/Net/Upwork/API/Routers/Messages.pm
 lib/Net/Upwork/API/Routers/Metadata.pm
 lib/Net/Upwork/API/Routers/Organization/Companies.pm
 lib/Net/Upwork/API/Routers/Organization/Teams.pm
@@ -92,7 +92,7 @@ README.md
 t/00.load.t
 t/01.core_packages.t
 t/02.routers_auth.t
-t/03.routers_mc.t
+t/03.routers_messages.t
 t/04.routers_snapshot.t
 t/05.routers_metadata.t
 t/06.routers_payments.t
