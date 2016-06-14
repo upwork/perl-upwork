@@ -19,7 +19,7 @@ use warnings;
 use Net::Upwork::API::Config;
 use Net::Upwork::API::Client;
 
-our $VERSION = '1.1.0';
+our $VERSION = '1.2.0';
 
 =pod
 

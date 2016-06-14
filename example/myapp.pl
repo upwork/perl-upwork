@@ -16,7 +16,6 @@ use lib "./lib"; # UPDATE IF NEEDED
 use Data::Dumper;
 use Net::Upwork::API;
 use Net::Upwork::API::Routers::Auth;
-use Net::Upwork::API::Routers::Mc;
 
 $config = Net::Upwork::API::Config->new(
     'consumer_key'    => 'xxxxxxxx',
@@ -42,11 +41,5 @@ if (!$api->has_access_token()) {
 
 $auth = Net::Upwork::API::Routers::Auth->new($api);
 $data = $auth->get_user_info();
-
-print Dumper $data;
-
-$mc = Net::Upwork::API::Routers::Mc->new($api);
-#$data = $mc->reply_to_thread('username', 8888, subject => "test subject", body => "test reply");
-$data = $mc->mark_thread('username', 8888, read => "true");
 
 print Dumper $data;

@@ -7,7 +7,7 @@ use_ok('Net::Upwork::API');
 use_ok('Net::Upwork::API::Config');
 use_ok('Net::Upwork::API::Client');
 use_ok('Net::Upwork::API::Routers::Auth');
-use_ok('Net::Upwork::API::Routers::Mc');
+use_ok('Net::Upwork::API::Routers::Messages');
 use_ok('Net::Upwork::API::Routers::Snapshot');
 use_ok('Net::Upwork::API::Routers::Metadata');
 use_ok('Net::Upwork::API::Routers::Payments');

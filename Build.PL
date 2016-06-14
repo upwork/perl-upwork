@@ -21,10 +21,11 @@ use Module::Build;
 shift(@ARGV) if defined $ARGV[0] and $ARGV[0] eq 'Build'; # accomodate with CPAN autoinstall
 
 my $builder = Module::Build->new(
+    (sign		=> 1),
     module_name         => 'Net::Upwork::API',
     license             => 'apache',
     dist_author         => 'Maksym Novozhylov <mnovozhilov@upwork.com>',
-    dist_version	=> '1.1.0',
+    dist_version	=> '1.2.0',
     dist_abstract       => 'Perl bindings for Upwork API',
     build_requires => {
         'Test::More' => '0.66',
