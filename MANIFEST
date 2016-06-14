@@ -89,6 +89,7 @@ MANIFEST			This list of files
 META.json
 META.yml
 README.md
+t/0-signature.t
 t/00.load.t
 t/01.core_packages.t
 t/02.routers_auth.t
