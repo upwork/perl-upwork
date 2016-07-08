@@ -36,7 +36,7 @@ html/Net/Upwork/API/Routers/Hr/Roles.html
 html/Net/Upwork/API/Routers/Hr/Submissions.html
 html/Net/Upwork/API/Routers/Jobs/Profile.html
 html/Net/Upwork/API/Routers/Jobs/Search.html
-html/Net/Upwork/API/Routers/Mc.html
+html/Net/Upwork/API/Routers/Messages.html
 html/Net/Upwork/API/Routers/Metadata.html
 html/Net/Upwork/API/Routers/Organization/Companies.html
 html/Net/Upwork/API/Routers/Organization/Teams.html

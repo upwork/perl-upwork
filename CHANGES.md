@@ -1,3 +1,6 @@
+## 1.2.1
+* Bug fixes in Messages and Submissions API
+
 ## 1.2.0
 * Added Messages API (new)
 * Message API (V1) is now fully depricated

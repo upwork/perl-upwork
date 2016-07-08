@@ -80,7 +80,7 @@ sub get_room_details {
     my $room_id = shift;
     my %params = @_;
 
-    return $self->client()->get("/messages/v3/" . $company . "/rooms", %params);
+    return $self->client()->get("/messages/v3/" . $company . "/rooms/" . $room_id, %params);
 }
 
 =item get_room_by_offer
