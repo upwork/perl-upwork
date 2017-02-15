@@ -66,7 +66,7 @@ sub get_list {
     my $self = shift;
     my %params = @_;
 
-    return $self->client()->get("/hr/v3/clients/applications", %params);
+    return $self->client()->get("/hr/v4/clients/applications", %params);
 }
 
 =item get_specific
@@ -94,7 +94,7 @@ sub get_specific {
     my $reference = shift;
     my %params = @_;
 
-    return $self->client()->get("/hr/v3/clients/applications/" . $reference, %params);
+    return $self->client()->get("/hr/v4/clients/applications/" . $reference, %params);
 }
 
 =back

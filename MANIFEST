@@ -1,4 +1,5 @@
 .docgen
+.tests
 .travis.yml
 Build.PL
 CHANGES.md
