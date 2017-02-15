@@ -1,3 +1,6 @@
+## 1.2.2
+* Applications API has moved from v3 to v4
+
 ## 1.2.1
 * Bug fixes in Messages and Submissions API
 
