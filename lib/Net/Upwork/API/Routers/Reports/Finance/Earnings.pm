@@ -70,54 +70,6 @@ sub get_by_freelancer {
     return $self->client()->get("/finreports/v2/providers/" . $freelancer_ref . "/earnings", %params);
 }
 
-=item get_by_freelancers_team
-
-    Generate Earning Reports for a Specific Freelancer's Team
-
-B<Parameters>
-
-$freelancer_team_ref
-
-    Freelancer's team reference
-
-B<Return value>
-
-    JSON response as a string
-
-=cut
-
-sub get_by_freelancers_team {
-    my $self = shift;
-    my $freelancer_team_ref = shift;
-    my %params = @_;
-
-    return $self->client()->get("/finreports/v2/provider_teams/" . $freelancer_team_ref . "/earnings", %params);
-}
-
-=item get_by_freelancers_company
-
-    Generate Earning Reports for a Specific Freelancer's Company
-
-B<Parameters>
-
-$freelancer_company_ref
-
-    Freelancer's company reference
-
-B<Return value>
-
-    JSON response as a string
-
-=cut
-
-sub get_by_freelancers_company {
-    my $self = shift;
-    my $freelancer_company_ref = shift;
-    my %params = @_;
-
-    return $self->client()->get("/finreports/v2/provider_companies/" . $freelancer_company_ref . "/earnings", %params);
-}
-
 =item get_by_buyers_team
 
     Generate Earning Reports for a Specific Buyer's Team

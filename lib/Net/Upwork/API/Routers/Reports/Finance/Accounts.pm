@@ -46,30 +46,6 @@ sub new {
     return Net::Upwork::API::init_router($class, $api, ENTRY_POINT);
 }
 
-=item get_owned
-
-    Generate Financial Reports for an owned Account
-
-B<Parameters>
-
-$freelancer_ref
-
-    Freelancer reference
-
-B<Return value>
-
-    JSON response as a string
-
-=cut
-
-sub get_owned {
-    my $self = shift;
-    my $freelancer_ref = shift;
-    my %params = @_;
-
-    return $self->client()->get("/finreports/v2/financial_account_owner/" . $freelancer_ref, %params);
-}
-
 =item get_specific
 
     Generate Financial Reports for a Specific Account
