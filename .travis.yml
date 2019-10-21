@@ -1,7 +1,6 @@
 language: perl
 perl:
   - "5.30"
-  - "5.29"
   - "5.28"
 notifications:
   email:
