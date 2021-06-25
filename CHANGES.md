@@ -1,3 +1,6 @@
+## 1.3.5
+* Fixed HR module issues
+
 ## 1.3.4
 * Fixed HR::get_list
 
