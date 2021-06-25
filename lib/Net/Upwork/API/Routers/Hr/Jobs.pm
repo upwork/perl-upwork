@@ -66,7 +66,7 @@ sub get_list {
     my $self = shift;
     my %params = @_;
 
-    return $self->client()->get("/hr/v2jobs", %params);
+    return $self->client()->get("/hr/v2/jobs", %params);
 }
 
 =item get_specific
