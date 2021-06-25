@@ -1,3 +1,6 @@
+## 1.3.4
+* Fixed HR::get_list
+
 ## 1.3.3
 * Send Message to a Batch of Rooms API
 
