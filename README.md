@@ -66,7 +66,7 @@ Start `cpan`
 2.
 Run the following command to install API:
 ```
-cpan> install Net::Upwork::API
+cpan> install Net::Upwork::API // make sure to install the latest 1.xx version in order to work with OAuth1, version 2.xx is aimed to work with OAuth2
 ```
 
 3.
