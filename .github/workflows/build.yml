@@ -28,6 +28,6 @@ jobs:
       - name: Log perl information
         run: perl -V
       - name: Install dependencies
-        run: cpanm install Net::Upwork::API
+        run: cpanm --installdeps --with-all-features . && cpanm install Net::Upwork::API
       # run test
       - run: ./Build test
