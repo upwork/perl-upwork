@@ -11,6 +11,7 @@ on:
 jobs:
   test:
 
+    needs: build
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -25,5 +26,9 @@ jobs:
         uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: ${{ matrix.perl }}
+      - name: Log perl information
+        run: perl -V
+      - name: Install dependencies
+        run: cd build && cpanm --installdeps --with-all-features . && cpanm install Net::Upwork::API
       # run test
       - run: ./Build test
