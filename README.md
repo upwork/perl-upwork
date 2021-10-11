@@ -4,7 +4,7 @@ Perl bindings for Upwork API (OAuth1)
 [![License](https://img.shields.io/github/license/upwork/perl-upwork)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![CPAN](https://img.shields.io/cpan/v/Net-Upwork-API.svg)](https://metacpan.org/pod/Net::Upwork::API)
 [![GitHub release](https://img.shields.io/github/release/upwork/perl-upwork.svg)](https://github.com/upwork/perl-upwork/releases)
-[![Build Status](https://travis-ci.org/upwork/perl-upwork.svg)](https://travis-ci.org/upwork/perl-upwork)
+[![Build Status](https://github.com/upwork/perl-upwork/workflows/build/badge.svg)](https://github.com/upwork/perl-upwork/actions)
 
 # Introduction
 This project provides a set of resources of Upwork API from http://developers.upwork.com
