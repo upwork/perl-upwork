@@ -1,4 +1,4 @@
-Perl bindings for Upwork API (OAuth1)
+Perl bindings for Upwork API (OAuth1) - DEPRECATED
 ============
 
 [![License](https://img.shields.io/github/license/upwork/perl-upwork)](http://www.apache.org/licenses/LICENSE-2.0.html)
